@@ -1,0 +1,38 @@
+#include <iostream>
+#include <vector>
+#include <queue>
+using namespace std;
+
+class MinHeap {
+    priority_queue<int, vector<int>, greater<int>> heap;
+
+public:
+    void insert(int marks) {
+        heap.push(marks);
+    }
+
+    int getMin() {
+        if (!heap.empty())
+            return heap.top();
+        else
+            return -1; // Indicates no elements in the heap
+    }
+};
+
+int main() {
+    MinHeap mh;
+    int n, marks;
+
+    cout << "Enter the number of students: ";
+    cin >> n;
+
+    cout << "Enter the marks obtained by each student:\n";
+    for (int i = 0; i < n; i++) {
+        cin >> marks;
+        mh.insert(marks);
+    }
+
+    cout << "Minimum marks obtained: " << mh.getMin() << endl;
+
+    return 0;
+}
